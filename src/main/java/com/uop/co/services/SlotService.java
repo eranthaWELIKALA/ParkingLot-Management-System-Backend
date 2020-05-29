@@ -39,8 +39,8 @@ public class SlotService {
 		return repo.findAll();
 	}
 	
-	public List<Slot> deleteSlot(Slot slot) throws Exception{
-		repo.delete(slot);
+	public List<Slot> deleteSlot(int slotId) throws Exception{
+		repo.deleteById(slotId);
 		return repo.findAll();
 	}
 

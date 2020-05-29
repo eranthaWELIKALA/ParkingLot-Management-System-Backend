@@ -28,8 +28,8 @@ public class FloorService {
 		return repo.findAll();
 	}
 	
-	public List<Floor> deleteFloor(Floor floor) throws Exception{
-		repo.delete(floor);
+	public List<Floor> deleteFloor(int floorId) throws Exception{
+		repo.deleteById(floorId);
 		return repo.findAll();
 	}
 

@@ -46,15 +46,19 @@ public class ReservationService {
 		return repo.findAll();
 	}
 	
-	public List<Reservation> updateReservation(Reservation_Service reservation_s) throws Exception{
-//		Reservation reservation;
-//		repo.save(reservation);
+	public List<Reservation> updateReservation(Reservation reservation) throws Exception{
+		repo.save(reservation);
 		return repo.findAll();
 	}
 	
-	public List<Reservation> deleteReservation(Reservation_Service reservation_s) throws Exception{
-//		Reservation reservation;
-//		repo.delete(reservation);
+	public List<Reservation> deleteReservation(String reservationId) throws Exception{
+		repo.deleteById(reservationId);
+		return repo.findAll();
+	}
+	
+	public List<Reservation> checkoutReservation(Reservation reservation) throws Exception{
+		reservation.setCheckedOut(true);
+		repo.save(reservation);
 		return repo.findAll();
 	}
 

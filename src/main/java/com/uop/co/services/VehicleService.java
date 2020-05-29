@@ -28,8 +28,8 @@ public class VehicleService {
 		return repo.findAll();
 	}
 	
-	public List<Vehicle> deleteVehicle(Vehicle vehicle) throws Exception{
-		repo.delete(vehicle);
+	public List<Vehicle> deleteVehicle(String vehicleId) throws Exception{
+		repo.deleteById(vehicleId);
 		return repo.findAll();
 	}
 	
