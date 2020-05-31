@@ -17,7 +17,7 @@ public class Reservation {
 	private UUID id;
 	private String userId;
 	private int slotId;
-	private String vehicleId;
+	private String vehicleNo;
 	private Date date;
 	private int startTime;
 	private int endTime;
@@ -25,7 +25,6 @@ public class Reservation {
 	
 	public Reservation() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public UUID getId() {
@@ -52,12 +51,12 @@ public class Reservation {
 		this.slotId = slotId;
 	}
 
-	public String getVehicleId() {
-		return vehicleId;
+	public String getVehicleNo() {
+		return vehicleNo;
 	}
 
-	public void setVehicleId(String vehicleId) {
-		this.vehicleId = vehicleId;
+	public void setVehicleNo(String vehicleNo) {
+		this.vehicleNo = vehicleNo;
 	}
 
 	public Date getDate() {

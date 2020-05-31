@@ -15,6 +15,7 @@ public class SlotService {
 	
 	@Autowired
 	private SlotRepository repo;
+	
 	@Autowired
 	private SlotHelper helper;
 	
@@ -23,8 +24,8 @@ public class SlotService {
 	}
 	
 	public List<Slot> addSlot(Slot slot) throws Exception{
-		int floorId = slot.getFloorId();
-		boolean ableToAddSlot = helper.ableToAddSlot(floorId);
+		int floorNo = slot.getFloorNo();
+		boolean ableToAddSlot = helper.ableToAddSlot(floorNo);
 		if(ableToAddSlot) {
 			repo.save(slot);
 		}

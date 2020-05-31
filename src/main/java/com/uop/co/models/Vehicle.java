@@ -1,10 +1,7 @@
 package com.uop.co.models;
 
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,10 +10,7 @@ import javax.persistence.Table;
 public class Vehicle {
 
 	@Id
-	@GeneratedValue
-	private UUID id;
-	
-	@Column(unique=true)
+	@Column(length=20)
 	private String vehicleNo;
 	private String vehicleType;
 		
@@ -24,12 +18,6 @@ public class Vehicle {
 		super();
 	}
 	
-	public UUID getId() {
-		return id;
-	}
-	public void setId(UUID id) {
-		this.id = id;
-	}
 	public String getVehicleNo() {
 		return vehicleNo;
 	}
