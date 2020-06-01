@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uop.co.models.Slot;
@@ -37,8 +38,8 @@ public class SlotController {
 	}
 	
 	@DeleteMapping("/delete")
-	public List<Slot> deleteSlot(@RequestBody Slot slot) throws Exception{
-		return service.deleteSlot(slot);
+	public List<Slot> deleteSlot(@RequestParam("id") int slotId) throws Exception{
+		return service.deleteSlot(slotId);
 	}
 
 }

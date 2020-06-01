@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uop.co.models.Floor;
@@ -37,7 +38,7 @@ public class FloorController {
 	}
 	
 	@DeleteMapping("/delete")
-	public List<Floor> deleteFloor(@RequestBody Floor floor) throws Exception{
-		return service.deleteFloor(floor);
+	public List<Floor> deleteFloor(@RequestParam("id") int floorId) throws Exception{
+		return service.deleteFloor(floorId);
 	}
 }

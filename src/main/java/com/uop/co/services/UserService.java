@@ -35,7 +35,7 @@ public class UserService {
 	
 	// update a user
 	public List<User> updateUser(User user) throws Exception{
-		Optional<User> userFromDBResponse = repo.findById(user.getId().toString());
+		Optional<User> userFromDBResponse = repo.findById(user.getNic());
 		User userFromDB = userFromDBResponse.get();
 		
 		// Set Details

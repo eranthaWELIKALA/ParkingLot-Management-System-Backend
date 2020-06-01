@@ -17,13 +17,13 @@ public class SlotHelper {
 	@Autowired
 	private SlotRepository slotRepo;
 	
-	public boolean ableToAddSlot(int floorId) throws Exception{
+	public boolean ableToAddSlot(int floorNo) throws Exception{
 		boolean result = false;
-		Optional<Floor> res = floorRepo.findById(floorId);
+		Optional<Floor> res = floorRepo.findById(floorNo);
 		if(res.isPresent()) {
 			Floor floor = res.get();
 			int maxSlotCount = floor.getNoOfSlots();
-			int slotCount = slotRepo.getSlotsByFloorId(floorId);
+			int slotCount = slotRepo.getSlotsByFloorId(floorNo);
 			if(slotCount>=maxSlotCount) {
 				return false;
 			}

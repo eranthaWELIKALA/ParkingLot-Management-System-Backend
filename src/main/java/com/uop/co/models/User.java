@@ -1,10 +1,7 @@
 package com.uop.co.models;
 
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 
 import javax.persistence.Id;
@@ -14,11 +11,9 @@ import javax.persistence.Id;
 public class User {
 
 	@Id
-	@GeneratedValue
-	private UUID id;
-	
-	@Column(unique=true)
+	@Column(length=20)
 	private String nic;
+	
 	private String firstname;
 	private String lastname;
 	private String email;
@@ -29,14 +24,6 @@ public class User {
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public UUID getId() {
-		return id;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
 	}
 
 	public String getNic() {

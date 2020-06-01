@@ -13,7 +13,7 @@ public class Slot {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int floorId;
+	private int floorNo;
 	private String slotType;
 	
 	public Slot() {
@@ -29,12 +29,12 @@ public class Slot {
 		this.id = id;
 	}
 
-	public int getFloorId() {
-		return floorId;
+	public int getFloorNo() {
+		return floorNo;
 	}
 
-	public void setFloorId(int floorId) {
-		this.floorId = floorId;
+	public void setFloorNo(int floorNo) {
+		this.floorNo = floorNo;
 	}
 
 	public String getSlotType() {

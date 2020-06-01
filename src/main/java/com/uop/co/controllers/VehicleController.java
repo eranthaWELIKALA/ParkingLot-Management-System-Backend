@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uop.co.models.Vehicle;
@@ -37,8 +38,8 @@ public class VehicleController {
 	}
 	
 	@DeleteMapping("/deletee")
-	public List<Vehicle> deleteVehicle(@RequestBody Vehicle vehicle) throws Exception{
-		return service.deleteVehicle(vehicle);
+	public List<Vehicle> deleteVehicle(@RequestParam("id") String vehicleId) throws Exception{
+		return service.deleteVehicle(vehicleId);
 	}
 
 }
