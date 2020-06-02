@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uop.co.helpers.UserHelper;
 import com.uop.co.models.User;
 import com.uop.co.repositories.UserRepository;
 
@@ -27,8 +26,7 @@ public class UserService {
 	
 	// create a user
 	public List<User> createUser(User user) throws Exception{
-		user.setType(UserHelper.selectUserType(user.getType()));
-		user.setPaymentMethod(UserHelper.selectPaymentMethod(user.getPaymentMethod()));
+		user.setType(user.getType());
 		repo.save(user);
 		return repo.findAll();
 	}
@@ -44,8 +42,7 @@ public class UserService {
 		userFromDB.setLastname(user.getLastname());
 		userFromDB.setEmail(user.getEmail());
 		userFromDB.setContactNo(user.getContactNo());
-		userFromDB.setType(UserHelper.selectUserType(user.getType()));
-		userFromDB.setPaymentMethod(UserHelper.selectPaymentMethod(user.getPaymentMethod()));
+		userFromDB.setType(user.getType());
 		
 		repo.save(userFromDB);
 		return repo.findAll();

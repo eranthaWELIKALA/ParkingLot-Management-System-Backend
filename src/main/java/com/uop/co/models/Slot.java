@@ -14,7 +14,7 @@ public class Slot {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int floorNo;
-	private String slotType;
+	private boolean reservational;
 	
 	public Slot() {
 		super();
@@ -37,12 +37,13 @@ public class Slot {
 		this.floorNo = floorNo;
 	}
 
-	public String getSlotType() {
-		return slotType;
+	public boolean isReservational() {
+		return reservational;
 	}
 
-	public void setSlotType(String slotType) {
-		this.slotType = slotType;
-	}
+	public void setReservational(boolean reservational) {
+		this.reservational = reservational;
+	}	
+	
 	
 }

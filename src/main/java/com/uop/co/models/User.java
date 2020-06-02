@@ -2,7 +2,11 @@ package com.uop.co.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
+
+import com.uop.co.enums.UserType;
 
 import javax.persistence.Id;
 
@@ -18,8 +22,11 @@ public class User {
 	private String lastname;
 	private String email;
 	private String contactNo;
-	private String type;
-	private String paymentMethod;
+	
+	@Enumerated(EnumType.STRING)
+	private UserType type; // Unregistered, Registered, Admin
+	
+	private String subscriptionType; // monthly, daily
 
 	public User() {
 		super();
@@ -66,20 +73,20 @@ public class User {
 		this.contactNo = contactNo;
 	}
 
-	public String getType() {
+	public UserType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(UserType type) {
 		this.type = type;
 	}
 
-	public String getPaymentMethod() {
-		return paymentMethod;
+	public String getSubscriptionType() {
+		return subscriptionType;
 	}
 
-	public void setPaymentMethod(String paymentMethod) {
-		this.paymentMethod = paymentMethod;
+	public void setSubscriptionType(String subscriptionType) {
+		this.subscriptionType = subscriptionType;
 	}
 
 }
