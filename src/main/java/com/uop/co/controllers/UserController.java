@@ -35,19 +35,19 @@ public class UserController {
 	
 	// create a user
 	@PostMapping("/create")
-	public List<User> createUser(@RequestBody User user) throws Exception{
+	public User createUser(@RequestBody User user) throws Exception{
 		return service.createUser(user);
 	}
 	
 	// update a user
 	@PutMapping("/update")
-	public List<User> updateUser(@RequestBody User user) throws Exception{
+	public User updateUser(@RequestBody User user) throws Exception{
 		return service.updateUser(user);
 	}
 	
 	// delete a user
 	@DeleteMapping("/delete")
-	public List<User> deleteUser(@RequestParam("id") String id) throws Exception{
+	public boolean deleteUser(@RequestParam("id") String id) throws Exception{
 		return service.deleteUser(id);
 	}
 

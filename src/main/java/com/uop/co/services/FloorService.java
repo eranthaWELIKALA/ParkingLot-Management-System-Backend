@@ -17,20 +17,5 @@ public class FloorService {
 	public List<Floor> getFloors() throws Exception{
 		return repo.findAll();
 	}
-	
-	public List<Floor> addFloor(Floor floor) throws Exception{
-		repo.save(floor);
-		return repo.findAll();
-	}
-	
-	public List<Floor> updateFloor(Floor floor) throws Exception{
-		repo.save(floor);
-		return repo.findAll();
-	}
-	
-	public List<Floor> deleteFloor(int floorId) throws Exception{
-		repo.deleteById(floorId);
-		return repo.findAll();
-	}
 
 }

@@ -1,6 +1,7 @@
 package com.uop.co.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,38 +20,74 @@ public class UserService {
 		return repo.findAll();
 	}
 	
-	// retrieve users by nic
+	// retrieve users by id
 	public User userByNIC(String nic) throws Exception{
-		return repo.findByNIC(nic);
+		Optional<User> userResponse = repo.findById(nic);
+		User  user;
+		try {
+			user = userResponse.get();
+		}
+		catch(NoSuchElementException ex) {
+			user = null;
+		}		
+		return user;
 	}
 	
-	// create a user
-	public List<User> createUser(User user) throws Exception{
-		user.setType(user.getType());
-		repo.save(user);
-		return repo.findAll();
+	// create a user if no existing user with the corresponding nic and retrieve the create user
+	public User createUser(User user) throws Exception{
+		String nic = user.getNic();
+		Optional<User> existingUserResponse = repo.findById(nic);
+		User existingUser;
+		try {
+			existingUser = existingUserResponse.get();
+		}
+		catch(NoSuchElementException ex) {
+			existingUser = null;
+		}
+		if(existingUser==null) {
+			user.setType(user.getType());
+			user = repo.save(user);
+		}		
+		return user;
 	}
 	
 	// update a user
-	public List<User> updateUser(User user) throws Exception{
-		Optional<User> userFromDBResponse = repo.findById(user.getNic());
-		User userFromDB = userFromDBResponse.get();
+	public User updateUser(User user) throws Exception{		
+		String nic = user.getNic();
+		String firstname = user.getFirstname();
+		String lastname = user.getFirstname();
+		String email = user.getEmail();
+		String contactNo = user.getContactNo();
 		
-		// Set Details
-		userFromDB.setNic(user.getNic());
-		userFromDB.setFirstname(user.getFirstname());
-		userFromDB.setLastname(user.getLastname());
-		userFromDB.setEmail(user.getEmail());
-		userFromDB.setContactNo(user.getContactNo());
-		userFromDB.setType(user.getType());
-		
-		repo.save(userFromDB);
-		return repo.findAll();
+		if(nic!=null) {
+			Optional<User> userFromDBResponse = repo.findById(nic);
+			User userFromDB = userFromDBResponse.get();
+			
+			// Set Details
+			userFromDB.setNic(nic);
+			userFromDB.setFirstname(firstname);
+			userFromDB.setLastname(lastname);
+			userFromDB.setEmail(email);
+			userFromDB.setContactNo(contactNo);
+			
+			user = repo.save(userFromDB);
+		}
+		else {
+			user = null;
+		}
+		return user;
 	}
 	
 	// delete a user
-	public List<User> deleteUser(String id) throws Exception{
-		repo.deleteById(id);
-		return repo.findAll();
+	public boolean deleteUser(String id){
+		boolean result = false;
+		try {
+			repo.deleteById(id);
+			result = true;
+		}
+		catch(Exception ex) {
+			result = false;
+		}
+		return result;
 	}
 }

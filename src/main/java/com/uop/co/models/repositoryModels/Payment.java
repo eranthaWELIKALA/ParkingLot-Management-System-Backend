@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.uop.co.enums.PaymentMethod;
 import com.uop.co.enums.PaymentType;
 import com.uop.co.models.User;
 
@@ -27,6 +28,9 @@ public class Payment {
 	
 	@Enumerated(EnumType.STRING)
 	private PaymentType type; // monthly_subscription, daily_subscription, registration
+	
+	@Enumerated(EnumType.STRING)
+	private PaymentMethod method; // cash, online
 	
 	@OneToOne
 	@JoinColumn(name = "reservation_id", foreignKey = @ForeignKey(name = "RESERVATION_ID"))
@@ -47,15 +51,27 @@ public class Payment {
 	public String getId() {
 		return id;
 	}
+	
 	public void setId(String id) {
 		this.id = id;
 	}
+	
 	public PaymentType getType() {
 		return type;
 	}
+	
 	public void setType(PaymentType type) {
 		this.type = type;
 	}
+	
+	public PaymentMethod getMethod() {
+		return method;
+	}
+
+	public void setMethod(PaymentMethod method) {
+		this.method = method;
+	}
+
 	public Reservation getReservation() {
 		return reservation;
 	}
