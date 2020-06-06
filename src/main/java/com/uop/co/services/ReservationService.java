@@ -2,10 +2,12 @@ package com.uop.co.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.uop.co.helpers.ReservationHelper;
 //import com.uop.co.helpers.ReservationHelper;
 import com.uop.co.models.repositoryModels.Reservation;
 import com.uop.co.models.serviceModels.Reservation_Service;
@@ -17,8 +19,8 @@ public class ReservationService {
 	@Autowired
 	private ReservationRepository repo;
 	
-//	@Autowired 
-//	private ReservationHelper helper;
+	@Autowired 
+	private ReservationHelper helper;
 	
 	public List<Reservation> getReservations() throws Exception{
 		return repo.findAll();
@@ -27,14 +29,16 @@ public class ReservationService {
 	public List<Reservation> createReservation(Reservation_Service reservation_s) throws Exception{
 		Reservation reservation = new Reservation();
 		
-		String userId = reservation_s.getUserId();
+		String id = UUID.randomUUID().toString();
+		String userNIC = reservation_s.getUserNIC();
 		int slotId = reservation_s.getSlotId();
 		String vehicleNo = reservation_s.getVehicleNo();		
 		Date date = reservation_s.getDate();
 		int startTime = reservation_s.getStartTime();
-		int endTime = reservation_s.getEndTime();
+		int endTime = reservation_s.getEndTime();		
 		
-		reservation.setUserId(userId);
+		reservation.setId(id);
+		reservation.setUser(helper.getUserByNIC(userNIC));
 		reservation.setSlotId(slotId);
 		reservation.setVehicleNo(vehicleNo);
 		reservation.setDate(date);

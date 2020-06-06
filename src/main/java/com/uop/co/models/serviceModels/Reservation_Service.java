@@ -5,7 +5,7 @@ import java.util.Date;
 public class Reservation_Service {
 
 	private String id;
-	private String userId;
+	private String user_nic;
 	private int slotId;
 	private String vehicleNo;
 	private Date date;
@@ -26,12 +26,12 @@ public class Reservation_Service {
 		this.id = id;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getUserNIC() {
+		return user_nic;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserNIC(String user_id) {
+		this.user_nic = user_id;
 	}
 
 	public int getSlotId() {
